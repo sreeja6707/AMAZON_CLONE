@@ -27,12 +27,12 @@ products.forEach((product)=>{
             </div>
 
             <div class="product-price">
-             ${product.getPrice()}
+              ${product.getPrice()}
             </div>
 
           
             <div class="product-quantity-container ">
-              <select class="js-quantity-selector-${product.id}">
+              <select>
                 <option selected value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>

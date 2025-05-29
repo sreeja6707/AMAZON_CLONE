@@ -4,7 +4,7 @@ function Cart(localStorageKey){
 
   
     loadFromStorage(){
-        this.cartItems=JSON.parse(localStorage.getItem('localStorageKey'));
+        this.cartItems=JSON.parse(localStorage.getItem(localStorageKey));
     if(!this.cartItems){
       this.cartItems=[{
       productId:'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
@@ -19,7 +19,7 @@ function Cart(localStorageKey){
   },
 
   saveToStorage(){
-  localStorage.setItem('localStorageKey', JSON.stringify(this.cartItems));
+  localStorage.setItem(localStorageKey, JSON.stringify(this.cartItems));
   },
 
 
@@ -81,7 +81,6 @@ cart.loadFromStorage();
 
 
 
-cart.loadFromStorage();
 
 businessCart.loadFromStorage();
 
