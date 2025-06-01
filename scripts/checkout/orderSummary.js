@@ -8,16 +8,19 @@
 
 
   export function renderOrderSummary(){
+    
     let cartSummaryHTML='';
     cart.forEach((cartItem)=>{
     const productId=cartItem.productId;
 
     const matchingProduct=getProduct(productId);
+     
 
     const deliveryOptionId=cartItem.deliveryOptionId;
 
     const deliveryOption=getDeliveryOption(deliveryOptionId);
 
+     
     const today=dayjs();
     const deliveryDate=today.add(
       deliveryOption.deliveryDays,
@@ -44,7 +47,7 @@
                     ${matchingProduct.name}
                   </div>
                   <div class="product-price">
-                    $${formatCurrency(matchingProduct.priceCents)}
+                    ${matchingProduct.getPrice()}
                   </div>
                   <div class="product-quantity
                     js-product-quantity-${matchingProduct.id}">
@@ -115,10 +118,10 @@
     return html;
     }
 
-
     document.querySelector('.js-order-summary')
-    .innerHTML=cartSummaryHTML;
+    .innerHTML = cartSummaryHTML;
 
+  
     document.querySelectorAll('.js-delete-link')
     .forEach((link)=>{
     link.addEventListener('click',()=>{
@@ -126,7 +129,7 @@
       removeFromCart(productId);
 
       const container=document.querySelector(`.js-cart-item-container-${productId}`);
-      container.remove();
+       container.remove();
       renderPaymentSummary();
     });
     });
